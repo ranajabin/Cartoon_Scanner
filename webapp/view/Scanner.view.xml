@@ -1,0 +1,224 @@
+<mvc:View
+    controllerName="Barcodescanner.cartoonscanner.controller.Scanner"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:ndc="sap.ndc"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+        titleAlignment="Center"
+    >
+        <!-- <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent> -->
+        <!-- <VBox class="sapUiSmallMargin" alignContent = "Center" alignItems = "Center"> -->
+        <VBox class="sapUiSmallMargin">
+            <ndc:BarcodeScannerButton
+                id="ScannerButton"
+                scanSuccess="onScanSuccess"
+                scanFail="onScanError"
+                inputLiveUpdate="onScanLiveupdate"
+                dialogTitle="Barcode Scanner Button Sample"
+            />
+            <!-- <HBox class="sapUiTinyMarginTop">
+			<Label text="Scan Result:"/>
+			<Text id="sampleBarcodeScannerResult" text="" class="sapUiTinyMarginBegin"/>
+		</HBox> -->
+        </VBox>
+        <content>
+            <VBox>
+                <!-- <f:SimpleForm
+                    labelSpanXL="4"
+                    labelSpanL="3"
+                    labelSpanM="4"
+                    labelSpanS="12"
+                    adjustLabelSpan="true"
+                    emptySpanXL="0"
+                    emptySpanL="4"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="4"
+                    columnsM="4"
+                > -->
+                <f:SimpleForm
+                    layout="ResponsiveGridLayout"
+                    emptySpanL="6"
+                    emptySpanM="6"
+                >
+                    <f:content>
+                        <!-- <VBox alignContent="Center" alignItems="Center"> -->
+                        <VBox>
+                            <HBox width="120px">
+                                <Label
+                                    text="H.U.Number"
+                                    width="90px"
+                                />
+                                <Input
+                                    width="180px"
+                                    id="sampleBarcodeScannerResult"
+                                />
+                                <Button
+                                    text="OK"
+                                    width="60px"
+                                />
+                            </HBox>
+
+                            <HBox width="120px">
+                                <Label
+                                    text="Unit/Floor"
+                                    width="90px"
+                                />
+                                <Input
+                                    value=""
+                                    width="180px"
+                                />
+                                <Button
+                                    text="T.S"
+                                    width="30px"
+                                    type="Transparent"
+                                />
+                                <Input
+                                    value=""
+                                    editable="false"
+                                    width="30px"
+                                    id="_idts"
+                                />
+                            </HBox>
+
+                            <HBox width="120px">
+                                <Label
+                                    text="D.Number"
+                                    width="90px"
+                                />
+                                <Input
+                                    value=""
+                                    width="180px"
+                                />
+                                <Button
+                                    text="S.Q"
+                                    width="30px"
+                                    type="Transparent"
+                                />
+                                <Input
+                                    value=""
+                                    id="_idsq"
+                                    editable="false"
+                                    width="30px"
+                                />
+                            </HBox>
+                            <HBox width="120px">
+                                <Text
+                                    text="Scan Here"
+                                    width="90px"
+                                />
+                                <Input
+                                    value=""
+                                    width="180px"
+                                    id="_idScanHere"
+                                />
+                                <!-- <Button text="OK" width = "30px" /> -->
+
+                                <ndc:BarcodeScannerButton
+                                    id="ScannerButton2"
+                                    scanSuccess="onScanSuccess1"
+                                    scanFail="onScanError1"
+                                    inputLiveUpdate="onScanLiveupdate"
+                                    dialogTitle="Barcode Scanner Button Sample"
+                                    width="60px"
+                                    visible="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </content>
+
+        <Table
+            id="table1"
+            mode="MultiSelect"
+            sticky="ColumnHeaders,HeaderToolbar"
+            alternateRowColors="true"
+            inset="true"
+            items="{Data1>/}"
+        >
+            <columns>
+                <Column demandPopin="true">
+                    <Text text="Material" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Batch_No" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Grid" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Quantity" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Scanned" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="EAN_NO" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input
+                            value="{Data1>Matnr}"
+                            editable="false"
+                            id="id1"
+                        />
+
+                        <Input
+                            value="{Data1>ZbatchNum}"
+                            editable="false"
+                            id="id2"
+                        />
+
+                        <Input
+                            value="{Data1>Zgrid}"
+                            editable="false"
+                            id="id3"
+                        />
+
+                        <Input
+                            value="{Data1>Menge}"
+                            editable="false"
+                            id="id4"
+                        />
+
+                        <Input
+                            value="{Data1>Zscanned}"
+                            editable="false"
+                            id="idScanned"
+                        />
+
+                        <Input
+                            value="{Data1>ZeanNum}"
+                            editable="false"
+                            id="id6"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>
